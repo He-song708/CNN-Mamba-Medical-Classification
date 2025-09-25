@@ -1,0 +1,33 @@
+data_dir: /home/hesong/fetal_data
+batch_size: 32
+num_workers: 4
+epochs: 60
+
+lr: 0.0001         # backbone lr
+head_lr: 0.0003    # ↓ 更稳
+freeze_epochs: 3
+warmup_iters: 5
+
+label_smoothing: 0.1
+backbone_lr_mult: 0.1
+grad_clip: 1.0
+
+# MixUp
+use_mixup: true
+mixup_alpha: 0.2   # ↓ 避免极端 λ
+
+# TTA
+use_tta: true
+
+pretrained: true
+d_model: 768
+n_mamba: 4
+use_ema: true
+
+model_names:
+  - resnet18
+  - vgg16
+  - densenet121
+  - mobilenet_v2
+  - efficientnet_b0
+  - cnn_mamba
